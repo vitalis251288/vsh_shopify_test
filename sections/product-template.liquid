@@ -8,7 +8,11 @@
   {% comment %}
     Get first variant, or deep linked one
   {% endcomment %}
-  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {% if product.variants.size > 1 %}
+    {% assign current_variant = product.selected %}
+  {% else %}
+    {% assign current_variant = product.first_available_variant %}
+  {% endif %}
   {%- assign product_image_zoom_size = '1024x1024' -%}
   {%- assign product_image_scale = '2' -%}
   {%- assign enable_zoom = section.settings.enable_zoom -%}
@@ -144,7 +148,7 @@
                     </label>
                     <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
                       {% for value in option.values %}
-                        <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                        <option value="{{ value | escape }}">{{ value }}</option>
                       {% endfor %}
                     </select>
                   </div>
@@ -190,14 +194,18 @@
                 <button type="submit" name="add"
                   {% unless current_variant.available %} aria-disabled="true"{% endunless %}
                   aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
-                  class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}"
+                  class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %} ajax_add_to_Cart_Btn"
                   data-add-to-cart>
                   <span data-add-to-cart-text>
-                    {% unless current_variant.available %}
-                      {{ 'products.product.sold_out' | t }}
+                    {% if variant or product.variants.size == 1 %}
+                      {% if product.available or product.variants.size == 1 and variant.available %}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {% else %}
+                        {{ 'products.product.sold_out' | t }}
+                      {% endif %}
                     {% else %}
-                      {{ 'products.product.add_to_cart' | t }}
-                    {% endunless %}
+                      {{ 'products.product.unavailable' | t }}
+                    {% endif %}
                   </span>
                   <span class="hide" data-loader>
                     {% render 'icon-spinner' %}

@@ -747,7 +747,7 @@ slate.Variants = (function() {
      * @return {event}  variantImageChange
      */
     _updateImages: function(variant) {
-      var variantImage = variant.featured_image || {};
+     var variantImage = variant.image || {};
       var currentVariantImage = this.currentVariant.featured_image || {};
 
       if (
@@ -770,12 +770,12 @@ slate.Variants = (function() {
      * @return {event} variantPriceChange
      */
     _updatePrice: function(variant) {
-      if (
+      /*if (
         variant.price === this.currentVariant.price &&
         variant.compare_at_price === this.currentVariant.compare_at_price
       ) {
         return;
-      }
+      }*/
 
       this.$container.trigger({
         type: 'variantPriceChange',
@@ -5118,3 +5118,19 @@ theme.init = function() {
 };
 
 $(theme.init);
+
+
+
+$(document).ready(function() {
+  if( typeof(productOptions ) != "undefined" ){
+    for(i=0;i<productOptions.length;i++) {
+      $('.single-option-selector:eq('+ i +')')
+      .filter(function() {
+        return $(this).find('option').length > 1
+      })
+      .prepend('<option value="">Pick a ' + productOptions[i][i] + '</option>')
+      .val('')
+      .trigger('change');
+    }
+  }
+});

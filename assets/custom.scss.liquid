@@ -494,7 +494,7 @@ a.site-header__logo-link{
 								content: "";
 								width: 20px;
 								background: #fff;
-								height: 1px;
+								height: 1px;   
 							}
 							&:after{
 								width: 15px;
@@ -525,13 +525,151 @@ a.site-header__logo-link{
 
 
 
+.custom-info{
+		.custom-blocks-3{
+			padding: 0 15px;
+			display: flex;
+			align-items: stretch;
+			li{
+				position: relative;
+				padding: 30px;
+				height: 100%;
+				background: #d9bf8f;
+				color: #fff; 
+				width: 33.333%;
+				&:nth-child(2){
+					background: #000;
+				}
+			}
+		}
+	}
+
+	
+
+.custom_three_blocks{
+	.custom_three_blocks_inner{
+		ul{
+			display: flex;
+			align-items: stretch;
+			li{
+				@media(min-width: 768px){
+					width: 33.333%;
+				}
+				background-color: #d9bf8f;
+				color: #fff;
+				&:nth-child(2){
+					background-color: #000;
+				}
+				.inner_img{}
+				.inner_text{
+					h3{
+						font-size: 30px;
+						font-family: Lato, sans-serif;
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+					p{
+						font-size: 14px;
+						font-family: Lato, sans-serif;
+						font-weight: 400;
+					}
+				}
+			}
+		}
+	}  
+}
+
+i.fas, i.far, i.fad{
+	font-family:'FontAwesome';
+	font-style: normal;
+}
+
+i.fa-life-ring,
+i.fa-clock,
+i.fa-plane{
+	font-size: 36px;
+}
+i.fa-clock{
+	font-family:'FontAwesome';
+	&:before{
+		content: "\f017";
+	}
+}
+
+
+.custom_brands{
+	padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: visible;
+    margin: 0;
+	height: auto !important;
+	width: auto !important;
+	min-height: 0 !important;
+	.c_item{
+		padding: 15px;
+	}
+	/*.grid__item{
+		    width: auto !important;
+		    height: auto !important;
+		    position: relative !important;
+		    float: none !important;
+		    margin-bottom: 0 !important;
+		    min-height: 0 !important;
+		.image-bar__item{
+			background-color: transparent !important;
+			background-size: contain !important;
+			height: auto !important;
+			img{
+				max-width: 170px;
+			    max-height: 100%;
+			    height: auto !important;
+			    width: auto !important;
+		    	min-height: 0 !important;
+			}
+		}
+	}*/
+}
 
 
 
 
 
 
+.custom_recent_collection{
+	.full-width-link{
+		//position: static;
+	}
+	input[type=submit]{
+		position: relative;
+		z-index: 3;
+	}
+	ul.grid{}
+}
 
+
+
+
+
+#shopify-section-featured-collections{
+	.price{
+		display: none;
+	}
+}
+
+h2{}
 
 
 

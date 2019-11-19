@@ -1,0 +1,151 @@
+<section class="custom_three_blocks">
+
+	<div class="container">
+		<div class="row">
+			{% if section.settings.text-box != blank %}
+	        	<div class="title">
+	          		<h2 class="h3">{{ section.settings.text-box | escape }}</h2>
+	        	</div>
+	      	{% endif %}
+
+	      	{% if section.settings.text != blank %}
+	        	<div class="sub_title">
+	          		<p class="sub_title">{{ section.settings.text }}</p>
+	        	</div>
+	      	{% endif %}
+
+ 
+
+
+			<div class="custom_three_blocks_inner">
+				<ul>
+					{% for block in section.blocks %}
+						<li>
+							{% case block.type %}
+
+				            {% when 'first-section' %}
+				            {% include 'snippet_first-section' %}
+
+				            {% when 'second-section' %}
+				            {% include 'snippet_second-section' %}
+
+				            {% when 'third-section' %}
+				            {% include 'snippet_third-section' %}
+
+				            {% when 'fourth-section' %}
+				            {% include 'snippet_fourth-section' %}
+
+				          {% endcase %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+
+
+
+{% schema %}
+
+{
+	"name": "Custom Three Blocks",
+	"class": "index-section",
+	"settings": [
+    	{
+	        "id": "text-box",
+	        "type": "text",
+	        "label": "Heading",
+	        "default": "Title"
+	    },
+      	{
+	        "id": "text",
+	        "type": "richtext",
+	        "label": "Add custom text below",
+	        "default": "<p>Add your text here</p>"
+      	}
+    ],
+	"blocks": [
+            {
+              "type": "first-section",
+              "name": "First Section",
+              "settings": [
+                {
+                  "id": "image1",
+                  "type": "image_picker",
+                  "label": "Image 1"
+                },
+                {
+                	"id": "titleOne",
+                	"type": "text",
+                	"label": "TextFirst"
+                },
+                {
+                  "id": "title1",
+                  "type": "text",
+                  "label": "TextSecond"
+                }
+              ]
+            },
+            {
+              "type": "second-section",
+              "name": "Second Section",
+              "settings": [
+                {
+                  "id": "image2",
+                  "type": "image_picker",
+                  "label": "Image 2"
+                },
+                {
+                	"id": "titleTwo",
+                	"type": "text",
+                	"label": "TextFirst"
+                },
+                {
+                  "id": "title2",
+                  "type": "text",
+                  "label": "TextSecond"
+                }
+              ]
+            },
+            {
+              "type": "third-section",
+              "name": "Third Section",
+              "settings": [
+                {
+                  "id": "image3",
+                  "type": "image_picker",
+                  "label": "Image 3"
+                },
+                {
+                	"id": "titleThree",
+                	"type": "text",
+                	"label": "TextFirst"
+                },
+                {
+                  "id": "title3",
+                  "type": "text",
+                  "label": "TextSecond"
+                }
+              ]
+            }
+          ],
+     "presets": [
+    	{
+    		"name": "Custom Three Blocks",
+    		"category": "Custom Three Blocks"
+    	}
+    ]
+}
+
+
+
+
+
+
+
+
+ 
+{% endschema %}
