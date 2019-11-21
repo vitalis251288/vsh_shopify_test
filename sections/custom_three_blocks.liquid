@@ -21,13 +21,14 @@
 				<ul>
 					{% for block in section.blocks %}
 						<li>
+            <div>
 							{% case block.type %}
 
 				            {% when 'first-section' %}
 				            {% include 'snippet_first-section' %}
 
 				            {% when 'second-section' %}
-				            {% include 'snippet_second-section' %}
+                    {% include 'snippet_second-section' %}
 
 				            {% when 'third-section' %}
 				            {% include 'snippet_third-section' %}
@@ -36,6 +37,7 @@
 				            {% include 'snippet_fourth-section' %}
 
 				          {% endcase %}
+                  </div>
 						</li>
 					{% endfor %}
 				</ul>
