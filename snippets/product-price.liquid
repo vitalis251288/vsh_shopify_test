@@ -6,7 +6,7 @@
     - show_vendor: {Boolean} Show the product's vendor depending on the section setting (optional)
 
     Usage:
-    {% include 'product-price', variant: current_variant, product: product %}
+    {% render 'product-price', variant: current_variant, product: product %}
 {% endcomment %}
 {% if variant.title %}
   {%- assign compare_at_price = variant.compare_at_price -%}
@@ -20,12 +20,7 @@
 
 {%- assign money_price = price | money -%}
 
-<dl class="price
-  {% if available == false %} price--sold-out {% endif %}
-  {% if available and compare_at_price > price %} price--on-sale {% endif %}
-  {% if available and variant.unit_price_measurement %} price--unit-available {% endif %}"
-  data-price
->
+<dl class="price{% if available and compare_at_price > price %} price--on-sale{% endif %}{% if available and variant.unit_price_measurement %} price--unit-available{% endif %}" data-price>
 
   {% if show_vendor and product %}
     <div class="price__vendor">
@@ -43,20 +38,24 @@
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
     </dt>
     <dd>
-      <span class="price-item price-item--regular" data-regular-price>
-        {{ money_price }}
-      </span>
+      {% if available %}
+        {% if compare_at_price > price %}
+          <s class="price-item price-item--regular" data-regular-price>
+            {{ compare_at_price | money }}
+          </s>
+        {% else %}
+          <span class="price-item price-item--regular" data-regular-price>
+            {{ money_price }}
+          </span>
+        {% endif %}
+      {% else %}
+        <span class="price-item price-item--regular" data-regular-price>
+          {{ 'products.product.sold_out' | t }}
+        </span>
+      {% endif %}
     </dd>
   </div>
   <div class="price__sale">
-    <dt>
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
-    </dt>
-    <dd>
-      <s class="price-item price-item--regular" data-regular-price>
-        {{ compare_at_price | money }}
-      </s>
-    </dd>
     <dt>
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
     </dt>
@@ -64,7 +63,7 @@
       <span class="price-item price-item--sale" data-sale-price>
         {{ money_price }}
       </span>
-      <span class="price-item__label price-item__label--sale" aria-hidden="true">{{ 'products.product.on_sale' | t }}</span>
+      <span class="price-item__label" aria-hidden="true">{{ 'products.product.on_sale' | t }}</span>
     </dd>
   </div>
   <div class="price__unit">
@@ -87,16 +86,6 @@
       {%- endcapture -%}
 
       <span data-unit-price>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
-    </dd>
-  </div>
-  <div class="price__availability">
-    <dt>
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.availability' | t }}</span>
-    </dt>
-    <dd>
-      <span class="price-item price-item--regular">
-        {{ 'products.product.sold_out' | t }}
-      </span>
     </dd>
   </div>
 </dl>

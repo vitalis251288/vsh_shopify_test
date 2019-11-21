@@ -369,8 +369,7 @@
       "include_taxes": "Z wliczonym podatkiem.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Koszt wysyłki<\/a> obliczony przy kasie.",
       "unit_price_label": "Cena jednostkowa",
-      "view_cart": "Zobacz koszyk",
-      "availability": "Dostępność"
+      "view_cart": "Zobacz koszyk"
     }
   },
   "gift_cards": {

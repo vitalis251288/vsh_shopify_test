@@ -369,24 +369,23 @@
       "include_taxes": "Imposto incluído.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Envio<\/a> calculado na finalização da compra.",
       "unit_price_label": "Preço unitário",
-      "view_cart": "Ver carrinho",
-      "availability": "Disponibilidade"
+      "view_cart": "Ver carrinho"
     }
   },
   "gift_cards": {
     "issued": {
-      "title_html": "Aqui está o seu cartão de oferta de {{ value }} para {{ shop }}!",
-      "subtext": "O seu cartão de oferta!",
-      "gift_card_code": "Código do cartão de oferta",
+      "title_html": "Aqui está o seu cartão-presente de {{ value }} para {{ shop }}!",
+      "subtext": "Aqui está o seu cartão-presente!",
+      "gift_card_code": "código do cartão de presente",
       "disabled": "Inválido",
       "expired": "Expirou em {{ expiry }}",
       "active": "Expira em {{ expiry }}",
       "redeem_html": "Utilize este código na finalização da compra para resgatar o seu {{ value }} cartão de oferta",
       "shop_link": "Começar a fazer compras",
-      "print": "Imprimir este cartão de oferta",
+      "print": "Imprimir este cartão presente",
       "remaining_html": "{{ balance }} restante",
       "add_to_apple_wallet": "Adicionar ao Apple Wallet",
-      "qr_image_alt": "QR code - digitalizar para resgatar cartão de oferta"
+      "qr_image_alt": "QR code - digitalizar para resgatar cartão de presente"
     }
   }
 }

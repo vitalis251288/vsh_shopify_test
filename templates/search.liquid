@@ -56,7 +56,7 @@
     {% for item in search.results %}
       <li class="list-view-item">
           {% if item.object_type == 'product' %}
-            {% include 'product-card-list', product: item %}
+            {% render 'product-card-list', product: item %}
           {% else %}
             <div class="product-card product-card--list">
               <a href="{{ item.url }}" class="full-width-link">
@@ -88,7 +88,7 @@
   </ul>
 
   {%- if paginate.pages > 1 -%}
-    {% include 'pagination', paginate: paginate %}
+    {% render 'pagination', paginate: paginate %}
   {%- endif -%}
 {% endif %}
 

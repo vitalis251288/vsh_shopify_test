@@ -369,8 +369,7 @@
       "include_taxes": "Sisältää veron.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Toimituskulut<\/a> lasketaan kassalla.",
       "unit_price_label": "Yksikköhinta",
-      "view_cart": "Katso ostoskori",
-      "availability": "Saatavuus"
+      "view_cart": "Katso ostoskori"
     }
   },
   "gift_cards": {

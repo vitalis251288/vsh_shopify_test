@@ -369,8 +369,7 @@
       "include_taxes": "Inclusief belasting",
       "shipping_policy_html": "<a href=\"{{ link }}\">Verzendkosten<\/a> worden berekend bij het afrekenen.",
       "unit_price_label": "Eenheidsprijs",
-      "view_cart": "Winkelwagen bekijken",
-      "availability": "Beschikbaarheid"
+      "view_cart": "Winkelwagen bekijken"
     }
   },
   "gift_cards": {

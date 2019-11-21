@@ -68,7 +68,7 @@
          id="Hero-{{ section.id }}"
          data-layout="{{ section.settings.hero_layout }}"
          {%- if section.settings.image -%}
-         data-bgset="{% include 'bgset', image: section.settings.image %}"
+         data-bgset="{% render 'bgset', image: section.settings.image %}"
          data-sizes="auto"
          data-parent-fit="cover"
          style="background-position: {{ section.settings.alignment }}; background-image: url('{{ section.settings.image | img_url: '300x300' }});"

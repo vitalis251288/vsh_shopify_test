@@ -369,8 +369,7 @@
       "include_taxes": "Vergi dahildir.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Kargo<\/a>, ödeme sayfasında hesaplanır.",
       "unit_price_label": "Birim fiyatı",
-      "view_cart": "Sepeti görüntüle",
-      "availability": "Stok durumu"
+      "view_cart": "Sepeti görüntüle"
     }
   },
   "gift_cards": {

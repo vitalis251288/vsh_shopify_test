@@ -369,8 +369,7 @@
       "include_taxes": "inkl. MwSt.",
       "shipping_policy_html": "zzgl. <a href=\"{{ link }}\">Versandkosten<\/a>",
       "unit_price_label": "Einzelpreis",
-      "view_cart": "Warenkorb einsehen",
-      "availability": "Verfügbarkeit"
+      "view_cart": "Warenkorb einsehen"
     }
   },
   "gift_cards": {

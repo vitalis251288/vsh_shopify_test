@@ -76,7 +76,7 @@
       "show_less": "表示を減らす"
     },
     "payment": {
-      "method": "決済方法"
+      "method": "お支払い方法"
     },
     "currency": {
       "dropdown_label": "通貨"
@@ -274,7 +274,7 @@
       "title": "注文 {{ name }}",
       "date_html": "注文の日付 {{ date }}",
       "cancelled_html": "注文がキャンセルされた日付 {{ date }}",
-      "cancelled_reason": "キャンセルの理由: {{ reason }}",
+      "cancelled_reason": "理由: {{ reason }}",
       "billing_address": "請求先住所",
       "payment_status": "お支払いの状況",
       "shipping_address": "配送先住所",
@@ -369,8 +369,7 @@
       "include_taxes": "税込",
       "shipping_policy_html": "<a href=\"{{ link }}\">配送料<\/a>は購入手続き時に計算されます。",
       "unit_price_label": "単価",
-      "view_cart": "カートを見る",
-      "availability": "公開状況"
+      "view_cart": "カートを見る"
     }
   },
   "gift_cards": {

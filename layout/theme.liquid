@@ -7,6 +7,8 @@
   <meta name="theme-color" content="{{ settings.color_button }}">
   <link rel="canonical" href="{{ canonical_url }}">
 
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap" rel="stylesheet" />
+
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
   {%- endif -%}
@@ -34,10 +36,13 @@
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
 
-  {% include 'social-meta-tags' %}
+  {% render 'social-meta-tags' %}
+
+  <!-- Font-Awesome ================================================== -->
+  {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
 
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-
+  {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
   <script>
     var theme = {
       breakpoints: {
@@ -89,10 +94,13 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
   {%- endif -%}
 
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+  
   <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
   <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-
+  <script src="{{ 'custom_js.js' | asset_url }}" defer="defer"></script>
   {{ content_for_header }}
 </head>
 
@@ -106,14 +114,14 @@
         <form class="search search-bar__form" action="{{ routes.search_url }}" method="get" role="search">
           <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
           <button class="search-bar__submit search__submit btn--link" type="submit">
-            {% include 'icon-search' %}
+            {% render 'icon-search' %}
             <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
           </button>
         </form>
       </div>
       <div class="search-bar__table-cell text-right">
         <button type="button" class="btn--link search-bar__close js-drawer-close">
-          {% include 'icon-close' %}
+          {% render 'icon-close' %}
           <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
         </button>
       </div>
@@ -121,7 +129,7 @@
   </div>
 
   {%- if settings.enable_ajax -%}
-    {% include 'cart-popup' %}
+    {% render 'cart-popup' %}
   {%- endif -%}
 
   {% section 'header' %}
@@ -144,5 +152,8 @@
     <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
     <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
   </ul>
+
+
+  {% include 'ajaxify-cart' %}
 </body>
 </html>

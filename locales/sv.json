@@ -369,8 +369,7 @@
       "include_taxes": "Skatt ingår.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Frakt<\/a>beräknas i kassan.",
       "unit_price_label": "Enhetspris",
-      "view_cart": "Visa varukorg",
-      "availability": "Tillgänglighet"
+      "view_cart": "Visa varukorg"
     }
   },
   "gift_cards": {

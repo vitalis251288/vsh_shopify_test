@@ -369,8 +369,7 @@
       "include_taxes": "कर शामिल है.",
       "shipping_policy_html": "चेकआउट के दौरान <a href=\"{{ link }}\">शिपिंग<\/a> की गणना की गई",
       "unit_price_label": "यूनिट मूल्य",
-      "view_cart": "कार्ट देखें",
-      "availability": "उपलब्धता"
+      "view_cart": "कार्ट देखें"
     }
   },
   "gift_cards": {

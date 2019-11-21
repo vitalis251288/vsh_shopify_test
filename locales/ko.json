@@ -369,8 +369,7 @@
       "include_taxes": "세금이 포함됨",
       "shipping_policy_html": "결제 시 <a href=\"{{ link }}\">배송료<\/a> 가 계산됨",
       "unit_price_label": "단가",
-      "view_cart": "카트 보기",
-      "availability": "사용 가능성"
+      "view_cart": "카트 보기"
     }
   },
   "gift_cards": {

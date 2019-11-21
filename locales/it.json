@@ -369,8 +369,7 @@
       "include_taxes": "Imposte incluse.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Spedizione<\/a> calcolata al momento del pagamento.",
       "unit_price_label": "Prezzo unitario",
-      "view_cart": "Visualizza carrello",
-      "availability": "Disponibilità"
+      "view_cart": "Visualizza carrello"
     }
   },
   "gift_cards": {

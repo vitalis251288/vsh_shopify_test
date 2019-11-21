@@ -369,8 +369,7 @@
       "include_taxes": "內含稅金。",
       "shipping_policy_html": "結帳時計算<a href=\"{{ link }}\">運費<\/a>。",
       "unit_price_label": "單價",
-      "view_cart": "檢視購物車",
-      "availability": "供貨情況"
+      "view_cart": "檢視購物車"
     }
   },
   "gift_cards": {
