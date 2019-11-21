@@ -369,7 +369,8 @@
       "include_taxes": "Taxes incluses.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés lors du passage à la caisse.",
       "unit_price_label": "Prix unitaire",
-      "view_cart": "Voir le panier"
+      "view_cart": "Voir le panier",
+      "availability": "Disponibilité"
     }
   },
   "gift_cards": {

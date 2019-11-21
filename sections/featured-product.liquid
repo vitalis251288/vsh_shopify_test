@@ -49,7 +49,7 @@
           {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
           {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-          {% render 'image-style', image: image, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
+          {% include 'image-style', image: image, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
 
           <div id="{{ img_wrapper_id }}" class="product-single__photo-wrapper js">
             <div id="{{ zoom_img_id }}" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" class="product-single__photo{% if enable_zoom %} js-zoom-enabled{% endif %}{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}{% unless featured_image == image %} hide{% endunless %}" data-image-id="{{ image.id }}"{% if enable_zoom %} data-zoom="{{ image | img_url: product_image_zoom_size, scale: product_image_scale }}"{% endif %}>
@@ -85,7 +85,7 @@
         <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__prev thumbnails-slider__prev--{{ section.id }}">
-              {% render 'icon-chevron-left' %}
+              {% include 'icon-chevron-left' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
             </button>
           {% endif %}
@@ -103,7 +103,7 @@
           </ul>
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__next thumbnails-slider__next--{{ section.id }}">
-              {% render 'icon-chevron-right' %}
+              {% include 'icon-chevron-right' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
             </button>
           {% endif %}
@@ -131,11 +131,11 @@
 
         <div>
           <div class="featured-product__price">
-            {% render 'product-price', variant: current_variant, product: product, show_vendor: section.settings.show_vendor %}
+            {% include 'product-price', variant: current_variant, product: product, show_vendor: section.settings.show_vendor %}
           </div>
 
           {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-            <div class="product__policies rte">
+            <div class="product__policies rte" data-product-policies>
               {%- if shop.taxes_included -%}
                 {{ 'products.product.include_taxes' | t }}
               {%- endif -%}
@@ -146,12 +146,14 @@
           {%- endif -%}
 
           {% if section_onboarding %}
-            <div class="product-form__item product-form__item--submit{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
-              <button type="submit" name="add" disabled class="btn product-form__cart-submit" data-add-to-cart>
-                <span data-add-to-cart-text>
-                    {{ 'products.product.sold_out' | t }}
-                </span>
-              </button>
+            <div class="product-form">
+              <div class="product-form__item product-form__item--submit{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
+                <button type="submit" name="add" disabled class="btn product-form__cart-submit" data-add-to-cart>
+                  <span data-add-to-cart-text>
+                      {{ 'products.product.sold_out' | t }}
+                  </span>
+                </button>
+              </div>
             </div>
           {% else %}
             {% capture "form_classes" -%}
@@ -202,7 +204,7 @@
 
               <div class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}" data-error-message-wrapper role="alert">
                 <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-                {% render 'icon-error' %}
+                {% include 'icon-error' %}
                 <span class="product-form__error-message" data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
               </div>
 
@@ -224,7 +226,7 @@
                       {% endunless %}
                     </span>
                     <span class="hide" data-loader>
-                      {% render 'icon-spinner' %}
+                      {% include 'icon-spinner' %}
                     </span>
                   </button>
                   {% if section.settings.enable_payment_button %}
@@ -263,7 +265,7 @@
         </div>
 
         {% if section.settings.show_share_buttons %}
-          {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+          {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
         {% endif %}
       </div>
     </div>

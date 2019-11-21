@@ -16,7 +16,7 @@
 </div>
 
 {% if section.settings.show_share_buttons %}
-  {% render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
 {% endif %}
 
 

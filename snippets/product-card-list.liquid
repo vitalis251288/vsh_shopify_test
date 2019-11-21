@@ -6,7 +6,7 @@
     - show_vendor: {Boolean} Show the product's vendor depending on the section setting (optional)
 
     Usage:
-    {% render 'product-card-list', product: product, show_vendor: section.settings.show_vendor %}
+    {% include 'product-card-list', product: product, show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 <div class="product-card product-card--list">
   <a class="full-width-link" href="{{ product.url | within: collection }}">
@@ -37,7 +37,7 @@
 
     <div class="list-view-item__price-column">
       {% if product.available %}
-        {% render 'product-price', variant: product.selected_or_first_available_variant, product: product, show_vendor: show_vendor %}
+        {% include 'product-price', variant: product.selected_or_first_available_variant, product: product, show_vendor: show_vendor %}
       {% endif %}
     </div>
   </div>

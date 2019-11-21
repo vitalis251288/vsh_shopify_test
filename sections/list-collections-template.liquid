@@ -31,13 +31,13 @@
       {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
         {% for collection in collections %}
           <li class="grid__item {{ grid_item_width }}">
-            {% render 'collection-grid-item', collection: collection %}
+            {% include 'collection-grid-item', collection: collection %}
           </li>
         {% endfor %}
       {% else %}
         {% for collection in collections reversed %}
           <li class="grid__item {{ grid_item_width }}">
-            {% render 'collection-grid-item', collection: collection %}
+            {% include 'collection-grid-item', collection: collection %}
           </li>
         {% endfor %}
       {% endif %}
@@ -45,7 +45,7 @@
       {% for block in section.blocks %}
         <li class="grid__item {{ grid_item_width }}">
           {%- assign collection = collections[block.settings.collection] -%}
-          {% render 'collection-grid-item', collection: collection %}
+          {% include 'collection-grid-item', collection: collection %}
         </li>
       {% endfor %}
     {% endif %}
@@ -195,7 +195,7 @@
         "ms": "Susunan koleksi oleh:",
         "nb": "Sorter samlinger etter:",
         "nl": "Collecties sorteren op:",
-        "pt-BR": "Ordenar coleções por:",
+        "pt-BR": "Organizar coleções por:",
         "pt-PT": "Ordenar coleções por:",
         "sv": "Sortera kollektioner efter:",
         "th": "จัดเรียงคอลเลกชันตาม:",
@@ -216,7 +216,7 @@
         "ms": "Penyusunan hanya terpakai apabila 'Semua' dipilih",
         "nb": "Sortering gjelder bare når «Alle» er valgt",
         "nl": "Sorteren is alleen van toepassing als Alles is geselecteerd",
-        "pt-BR": "A classificação só se aplica quando \"Tudo\" está selecionado",
+        "pt-BR": "A organização só se aplica quando \"Tudo\" está selecionado",
         "pt-PT": "A ordenação só se aplica quando \"Tudo\" está selecionado",
         "sv": "Sortering gäller endast när \"Alla\" är markerat",
         "th": "การจัดเรียงจะใช้ได้เมื่อเลือก 'ทั้งหมด' เท่านั้น",

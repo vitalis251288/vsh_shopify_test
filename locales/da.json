@@ -369,7 +369,8 @@
       "include_taxes": "Inklusive moms.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Levering<\/a> beregnes ved betaling.",
       "unit_price_label": "Pris pr. stk.",
-      "view_cart": "Se indkøbskurv"
+      "view_cart": "Se indkøbskurv",
+      "availability": "Tilgængelige"
     }
   },
   "gift_cards": {

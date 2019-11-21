@@ -369,7 +369,8 @@
       "include_taxes": "Včetně daní.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Poštovné<\/a> se vypočítá v pokladně.",
       "unit_price_label": "Jednotková cena",
-      "view_cart": "Zobrazit košík"
+      "view_cart": "Zobrazit košík",
+      "availability": "Dostupnost"
     }
   },
   "gift_cards": {

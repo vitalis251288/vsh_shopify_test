@@ -2995,6 +2995,9 @@ hr {
     font-size: em($font-size-base - 1px);
   }
 
+  .price {
+    align-items: flex-end;
+  }
   .price__vendor,
   .price-item__label {
     display: none;
@@ -5862,8 +5865,9 @@ $transition-controls-slideshow: color 0.2s $ease-transition, background-color 0.
 }
 
 .price {
-  @include display-flexbox;
-  @include flex-wrap(wrap);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-top: 0;
   margin-bottom: 0;
 
@@ -5884,15 +5888,33 @@ $transition-controls-slideshow: color 0.2s $ease-transition, background-color 0.
 }
 
 .price__regular {
-  color: $color-body-text;
+  display: block;
+}
+
+.price--on-sale {
+  .price__regular, .price__availability {
+    display: none;
+  }
+}
+
+.price__availability {
+  display: none;
+}
+
+.price--sold-out {
+  .price__availability {
+    display: block;
+  }
+  .price__regular, .price__sale, .price__unit {
+    display: none;
+  }
 }
 
 .price__sale {
-  color: $color-sale-text;
   display: none;
 
   .price--on-sale & {
-    display: block;
+    display: flex;
   }
 }
 
@@ -5917,7 +5939,12 @@ $transition-controls-slideshow: color 0.2s $ease-transition, background-color 0.
 }
 
 .price-item {
+  color: $color-body-text;
   font-weight: $font-weight-header;
+}
+
+.price-item--sale {
+  color: $color-sale-text;
 }
 
 .price-item--regular {
@@ -5936,6 +5963,11 @@ $transition-controls-slideshow: color 0.2s $ease-transition, background-color 0.
   white-space: nowrap;
   font-weight: $font-weight-header;
 }
+
+.price-item__label--sale {
+  color: $color-sale-text;
+}
+
 
 /*================ Module | Filters and Sort toolbar and selection ================*/
 $toolbar-height: 55px;

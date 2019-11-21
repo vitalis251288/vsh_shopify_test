@@ -11,7 +11,7 @@
         {% for block in section.blocks %}
           <div class="quotes-slide--{{ block.id }}" {{ block.shopify_attributes }}>
             <blockquote class="quotes-slider__text text-center">
-              <span class="quote-icon">{% render 'icon-quote' %}</span>
+              <span class="quote-icon">{% include 'icon-quote' %}</span>
               {% if block.settings.quote != blank %}
                 <div class="rte-setting rte">{{ block.settings.quote }}</div>
               {% endif %}
@@ -26,7 +26,7 @@
   {% endif %}
 
   {% if section.blocks.size == 0 %}
-    {% render 'no-blocks' %}
+    {% include 'no-blocks' %}
   {% endif %}
 </div>
 
@@ -168,7 +168,7 @@
             "ms": "<p>Tambah ulasan pelanggan dan testimoni untuk menunjukkan pelanggan gembira kedai anda.</p>",
             "nb": "<p>Legg til kundeomtaler og anbefalinger for å vise frem butikkens glade kunder.</p>",
             "nl": "<p>Voeg beoordelingen van klanten en testimonials toe om te laten zien dat je klanten tevreden zijn.</p>",
-            "pt-BR": "<p>Adicione comentários e depoimentos de clientes para destacar os clientes felizes da sua loja.</p>",
+            "pt-BR": "<p>Adicione comentários e depoimentos para dar destaque aos clientes satisfeitos com a sua loja.</p>",
             "pt-PT": "<p>Adicione análises e testemunhos de clientes felizes da sua loja.</p>",
             "sv": "<p>Lägg till kundrecensioner och berättelser för att visa upp din butiks nöjda kunder.</p>",
             "th": "<p>เพิ่มรีวิวและเสียงชื่นชมจากลูกค้าเพื่อนำเสนอลูกค้าที่ได้รับความพึงพอใจจากร้านค้า</p>",

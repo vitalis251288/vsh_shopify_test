@@ -6,7 +6,7 @@
     - show_vendor: {Boolean} Show the product's vendor depending on the section setting (optional)
 
     Usage:
-    {% render 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
+    {% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 <div class="grid-view-item{% unless product.available %} grid-view-item--sold-out{% endunless %} product-card">
   <a class="grid-view-item__link grid-view-item__image-container full-width-link" href="{{ product.url | within: collection }}">
@@ -18,7 +18,7 @@
   {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
   {% unless product.featured_image == blank %}
-    {% render 'image-style', image: product.featured_image, height: max_height, wrapper_id: wrapper_id, img_id: img_id %}
+    {% include 'image-style', image: product.featured_image, height: max_height, wrapper_id: wrapper_id, img_id: img_id %}
   {% endunless %}
 
   <div class="product-card__image-with-placeholder-wrapper" data-image-with-placeholder-wrapper>
@@ -42,15 +42,8 @@
     <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: image_size, scale: 2 }}" alt="{{ product.featured_image.alt }}" style="max-width: {{ max_height | times: product.featured_image.aspect_ratio }}px;">
   </noscript>
 
-  <!--<div class="h4 grid-view-item__title product-card__title" aria-hidden="true">{{ product.title }}</div>-->
+  <div class="h4 grid-view-item__title product-card__title" aria-hidden="true">{{ product.title }}</div>
 
-  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
- 
-  <input type="submit"  value="Add to cart" class="btn" />
-      <input type="hidden" name="return_to" value="back" />
-
-
-  {% render 'product-price', variant: product.selected_or_first_available_variant, product: product, show_vendor: show_vendor %}
+  {% include 'product-price', variant: product.selected_or_first_available_variant, product: product, show_vendor: show_vendor %}
 
 </div>
-

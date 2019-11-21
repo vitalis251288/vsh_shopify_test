@@ -369,7 +369,8 @@
       "include_taxes": "Termasuk cukai.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Penghantaran<\/a> dikira semasa daftar keluar.",
       "unit_price_label": "Harga seunit",
-      "view_cart": "Lihat troli"
+      "view_cart": "Lihat troli",
+      "availability": "Ketersediaan"
     }
   },
   "gift_cards": {

@@ -747,7 +747,7 @@ slate.Variants = (function() {
      * @return {event}  variantImageChange
      */
     _updateImages: function(variant) {
-     var variantImage = variant.image || {};
+      var variantImage = variant.featured_image || {};
       var currentVariantImage = this.currentVariant.featured_image || {};
 
       if (
@@ -770,12 +770,12 @@ slate.Variants = (function() {
      * @return {event} variantPriceChange
      */
     _updatePrice: function(variant) {
-      /*if (
+      if (
         variant.price === this.currentVariant.price &&
         variant.compare_at_price === this.currentVariant.compare_at_price
       ) {
         return;
-      }*/
+      }
 
       this.$container.trigger({
         type: 'variantPriceChange',
@@ -2872,6 +2872,15 @@ theme.Cart = (function() {
     quantityItem: 'data-quantity-item'
   };
 
+  theme.breakpoints = theme.breakpoints || {};
+
+  if (
+    isNaN(theme.breakpoints.medium) ||
+    theme.breakpoints.medium === undefined
+  ) {
+    theme.breakpoints.medium = 750;
+  }
+
   var mediumUpQuery = '(min-width: ' + theme.breakpoints.medium + 'px)';
 
   function Cart(container) {
@@ -4000,16 +4009,19 @@ theme.Product = (function() {
       regularPrice: '[data-regular-price]',
       salePrice: '[data-sale-price]',
       unitPrice: '[data-unit-price]',
-      unitPriceBaseUnit: '[data-unit-price-base-unit]'
+      unitPriceBaseUnit: '[data-unit-price-base-unit]',
+      productPolicies: '[data-product-policies]'
     };
 
     this.classes = {
       cartPopupWrapperHidden: 'cart-popup-wrapper--hidden',
       hidden: 'hide',
+      visibilityHidden: 'visibility-hidden',
       inputError: 'input--error',
       productOnSale: 'price--on-sale',
       productUnitAvailable: 'price--unit-available',
       productUnavailable: 'price--unavailable',
+      productSoldOut: 'price--sold-out',
       cartImage: 'cart-popup-item__image',
       productFormErrorMessageWrapperHidden:
         'product-form__error-message-wrapper--hidden',
@@ -4027,6 +4039,7 @@ theme.Product = (function() {
       this.selectors.shopifyPaymentButton,
       $container
     );
+    this.$productPolicies = $(this.selectors.productPolicies, $container);
 
     this.$loader = $(this.selectors.loader, this.$addToCart);
     this.$loaderStatus = $(this.selectors.loaderStatus, $container);
@@ -4734,13 +4747,24 @@ theme.Product = (function() {
         .removeClass(this.classes.productUnavailable)
         .removeClass(this.classes.productOnSale)
         .removeClass(this.classes.productUnitAvailable)
+        .removeClass(this.classes.productSoldOut)
         .removeAttr('aria-hidden');
+
+      this.$productPolicies.removeClass(this.classes.visibilityHidden);
 
       // Unavailable
       if (!variant) {
         $priceContainer
           .addClass(this.classes.productUnavailable)
           .attr('aria-hidden', true);
+
+        this.$productPolicies.addClass(this.classes.visibilityHidden);
+        return;
+      }
+
+      // Sold out
+      if (!variant.available) {
+        $priceContainer.addClass(this.classes.productSoldOut);
         return;
       }
 
@@ -4810,9 +4834,11 @@ theme.ProductRecommendations = (function() {
   function ProductRecommendations(container) {
     this.$container = $(container);
 
+    var baseUrl = this.$container.data('baseUrl');
     var productId = this.$container.data('productId');
     var recommendationsSectionUrl =
-      '/recommendations/products?&section_id=product-recommendations&product_id=' +
+      baseUrl +
+      '?section_id=product-recommendations&product_id=' +
       productId +
       '&limit=4';
 
@@ -5118,19 +5144,3 @@ theme.init = function() {
 };
 
 $(theme.init);
-
-
-
-$(document).ready(function() {
-  if( typeof(productOptions ) != "undefined" ){
-    for(i=0;i<productOptions.length;i++) {
-      $('.single-option-selector:eq('+ i +')')
-      .filter(function() {
-        return $(this).find('option').length > 1
-      })
-      .prepend('<option value="">Pick a ' + productOptions[i][i] + '</option>')
-      .val('')
-      .trigger('change');
-    }
-  }
-});

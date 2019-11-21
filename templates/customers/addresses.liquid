@@ -188,7 +188,7 @@
       </ul>
 
       {%- if paginate.pages > 1 -%}
-        {% render 'pagination', paginate: paginate %}
+        {% include 'pagination', paginate: paginate %}
       {%- endif -%}
     </div>
   </div>

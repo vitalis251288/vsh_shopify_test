@@ -1,4 +1,4 @@
-<div class="page-width custom_recent_collection">
+<div class="page-width">
   {% if section.settings.title != blank %}
     <div class="section-header text-center">
       <h2>{{ section.settings.title | escape }}</h2>
@@ -24,17 +24,10 @@
 
   {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
 
-
-
-
-
-
   <ul class="grid grid--uniform grid--view-items">
     {% for product in collection.products limit: product_limit %}
       <li class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-      <form method="post" action="/cart/add">
-        {% render 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
-        </form> 
+        {% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
       </li>
     {% else %}
 
@@ -49,14 +42,12 @@
               {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
             </div>
             <div class="h4 grid-view-item__title" aria-hidden="true">{{ 'homepage.onboarding.product_title' | t }}</div>
-            {% render 'product-price' %}
+            {% include 'product-price' %}
           </div>
         </li>
       {% endfor %}
     {% endfor %}
   </ul>
-
-
 
   {% if section.settings.show_view_all %}
     <hr class="hr--invisible" aria-hidden="true" />
@@ -276,13 +267,6 @@
         "zh-TW": "顯示「檢視全部」按鈕"
       },
       "default": false
-    },
-    {
-      "type": "text",
-      "id": "s_title",
-      "label": {
-        "en": "helper text"
-      }
     }
   ],
   "presets": [
